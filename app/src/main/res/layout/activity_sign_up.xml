@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button4"
         android:layout_alignParentBottom="true"
+        android:onClick="clickSignUpSign"
         android:textSize="30sp" />
 
     <TextView
