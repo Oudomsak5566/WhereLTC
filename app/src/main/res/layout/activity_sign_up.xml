@@ -8,6 +8,101 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.hp.whereltc.SignUpActivity">
+    tools:context="com.example.hp.whereltc.SignUpActivity"
+    android:background="@drawable/wallpapers_a_07">
+
+    <Button
+        android:text="@string/strSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_alignParentBottom="true"
+        android:textSize="30sp" />
+
+    <TextView
+        android:text="@string/strSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView2"
+        android:layout_above="@+id/button4">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView1"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="@android:color/holo_red_dark" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText1"
+                android:layout_weight="2"
+                android:textColor="@android:color/holo_red_dark" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Username"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="@android:color/holo_red_dark" />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText3"
+                android:layout_weight="2"
+                android:textColor="@android:color/holo_red_dark" />
+
+        </LinearLayout><LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:textColor="@android:color/holo_red_dark" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_weight="2"
+            android:textColor="@android:color/holo_red_dark" />
+
+    </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
