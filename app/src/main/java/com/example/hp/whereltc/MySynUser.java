@@ -35,6 +35,8 @@ public class MySynUser extends AsyncTask<Void,Void,String>{
             Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
 
+
+
         } catch (Exception e) {
             //Chk Log (Alt+6)
             Log.d("14DecV2", "e SynUser > "+e.toString());
