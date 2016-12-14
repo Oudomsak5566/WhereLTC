@@ -39,6 +39,9 @@ public class SignUpActivity extends AppCompatActivity {
             //Have Space
             Log.d("LogChkSpase", "Have Space");
 
+            MyAlert myAlert = new MyAlert(SignUpActivity.this,"Have space","Please check your input",R.drawable.doremon48);
+            myAlert.myDialog();
+
         }
 
 
