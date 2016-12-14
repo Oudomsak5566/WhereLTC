@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">WhereLTC</string>
-
     <string name="strSignUp">ສະໝັກສະມາຊິກ</string>
+
+    <string name="tile_have_space">ການລະບຸຂໍ້ມູນ</string>
+    <string name="message_have_space">ກະລຸນາກວດສອບການລະບຸຂໍ້ມູນ</string>
+
+    <string name="tile_user_fail">ຊື່ຜູ້ໃຊ້ບໍ່ຖືກຕ້ອງ</string>
+    <string name="message_user_fail">ກະລຸນາກວດສອບຊື່ຜູ້ໃຊ້ທ່ານອີກຄັ້ງ</string>
+
+    <string name="tile_password_fail">ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ</string>
+    <string name="message_password_fail">ກະລຸນາກວດສອບລະຫັດຜ່ານທ່ານອີກຄັ້ງ</string>
 
 </resources>

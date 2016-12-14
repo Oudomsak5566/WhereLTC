@@ -49,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.d("14DecV3", "Result ==>" + s);
                 if (Boolean.parseBoolean(s)) {
                     finish();
+                    Toast.makeText(SignUpActivity.this,"Sign up Complete",Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(SignUpActivity.this,"Can't Update User",Toast.LENGTH_SHORT).show();
                 }
