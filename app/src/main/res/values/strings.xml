@@ -10,5 +10,6 @@
 
     <string name="tile_password_fail">ລະຫັດຜ່ານບໍ່ຖືກຕ້ອງ</string>
     <string name="message_password_fail">ErrPass ກະລຸນາກວດສອບລະຫັດຜ່ານທ່ານອີກຄັ້ງ</string>
+    <string name="title_activity_service">Map</string>
 
 </resources>
