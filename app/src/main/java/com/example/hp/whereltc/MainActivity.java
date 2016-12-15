@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     myAlert.myDialog();
                 } else if (passwordString.equals(loginStrings[3])) {
                     //Password true
-                    Toast.makeText(MainActivity.this,"Login Success" + loginStrings[1],Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Login Success " + loginStrings[1],Toast.LENGTH_LONG).show();
 
                 } else {
                     //Password False
