@@ -7,6 +7,10 @@ import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,17 +28,25 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
 
     private LocationManager locationManager;
     private Criteria criteria;
-    private double latADouble, lngADouble;
+    private double latADouble, lngADouble, updateLatADouble, updateLngADouble;
+    private String[] loginStrings;
+    private TextView textView;
 
-
-
-
+    private EditText editText;
+    private ImageView imageView, takePhotoImageView;
+    private String nameImageString;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_layout);
+
+        //Bind Widget
+        textView = (TextView) findViewById(R.id.textView8);
+        editText = (EditText) findViewById(R.id.editText5);
+        imageView = (ImageView) findViewById(R.id.imageView5);
+        takePhotoImageView = (ImageView) findViewById(R.id.imageView3);
 
 
 
@@ -45,13 +57,10 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         criteria.setAltitudeRequired(false);
         criteria.setBearingRequired(false);
 
+        loginStrings = getIntent().getStringArrayExtra("Login");
 
-
-
-
-
-
-
+        //Show view Login by
+        textView.setText(loginStrings[1]);
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -59,6 +68,28 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }// Main Method
+
+
+    public void clickSave(View view) {
+        nameImageString = editText.getText().toString().trim();
+        //Check Space
+        if (nameImageString.equals("")) {
+            //Have Space
+            MyAlert myAlert = new MyAlert(ServiceActivity.this,
+                    getResources().getString(R.string.tile_have_space) ,
+                    getResources().getString(R.string.message_have_space),
+                    R.drawable.nobita48);
+            myAlert.myDialog();
+        } else {
+
+        }
+
+
+    }//clickSave
+
+
+
+
 
     // Override Method for Resume Service (Alt+Insert > Override Method > select onResume():void )
     @Override
@@ -84,8 +115,6 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
 
     }
 
-
-
     // Override Method for StopService (Alt+Insert > Override Method > select onStop():void )
     @Override
     protected void onStop() {
@@ -93,10 +122,6 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         //Method t yark hai stop
         locationManager.removeUpdates(locationListener);
     }
-
-
-
-
 
     public Location myFindLocation(String strProvider) {
         Location location = null;
@@ -106,14 +131,6 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         }
         return location;
     }
-
-
-
-
-
-
-
-
 
     public LocationListener  locationListener = new LocationListener() {
         @Override
@@ -141,15 +158,12 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         }
     };
 
-
-
-
-
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        updateLatADouble = latADouble;
+        updateLngADouble = lngADouble;
+
 
         LatLng latLng = new LatLng(latADouble, lngADouble);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,19));
@@ -164,11 +178,16 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         });
 
 
+
     }
 
     private void myAddMarker(double latADouble, double lngADouble) {
         LatLng latLng = new LatLng(latADouble, lngADouble);
         mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.build1)));
+
+        updateLatADouble = latADouble;
+        updateLngADouble = lngADouble;
+
 
 
     }
