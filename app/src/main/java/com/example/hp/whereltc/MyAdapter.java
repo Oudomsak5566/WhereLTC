@@ -56,13 +56,12 @@ public class MyAdapter extends BaseAdapter {
         //findViewByid(R.id.TextView) > ctrl+shift+enter > cast to (alt+enter)
         TextView nameTextView = (TextView) view1.findViewById(R.id.textView);
         TextView latTextView = (TextView) view1.findViewById(R.id.textView5);
-        TextView lngTextView = (TextView) view1.findViewById(R.id.textView8);
+        TextView lngTextView = (TextView) view1.findViewById(R.id.textView6);
         ImageView iconImageView = (ImageView) view1.findViewById(R.id.imageView2);
 
         nameTextView.setText(nameStrings[i]);
         latTextView.setText("Lat = " + String.format("%.3f",Double.parseDouble(latStrings[i])));
         lngTextView.setText("Lng = " + String.format("%.3f",Double.parseDouble(lngStrings[i])));
-
         Picasso.with(context).load(iconStrings[i]).into(iconImageView);
 
 

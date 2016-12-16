@@ -45,7 +45,8 @@
         <activity
             android:name=".ServiceActivity"
             android:label="@string/title_activity_service" />
-        <activity android:name=".LTClistView"></activity>
+        <activity android:name=".LTClistView" />
+        <activity android:name=".SplashScreen"></activity>
     </application>
 
 </manifest>
