@@ -25,7 +25,9 @@ public class MyUpdateUser extends AsyncTask<Void, Void, String> {
 
 
     //Explicit
-    private static final String urlPHP = "http://swiftcodingthai.com/ltc/add_user_Mounoy.php";
+    //private static final String urlPHP = "http://swiftcodingthai.com/ltc/add_user_Mounoy.php";
+    private static final String urlPHP = "http://lao-hosting.com/ltc/add_user_master.php";
+
     private Context context;
     private String nameString,usernameString,passwordString;
 
@@ -47,9 +49,9 @@ public class MyUpdateUser extends AsyncTask<Void, Void, String> {
             OkHttpClient okHttpClient = new OkHttpClient();
             RequestBody requestBody = new FormEncodingBuilder()
                     .add("isAdd", "true")
-                    .add("name", nameString)
-                    .add("username", usernameString)
-                    .add("password", passwordString)
+                    .add("Name", nameString)
+                    .add("User", usernameString)
+                    .add("Password", passwordString)
                     .build();
             Request.Builder builder = new Request.Builder();
             Request request = builder.url(urlPHP).post(requestBody).build();

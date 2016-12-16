@@ -12,4 +12,7 @@
     <string name="message_password_fail">ErrPass ກະລຸນາກວດສອບລະຫັດຜ່ານທ່ານອີກຄັ້ງ</string>
     <string name="title_activity_service">Map</string>
 
+    <string name="title_noimage">No Image</string>
+    <string name="message_noimage">Please Choose Image</string>
+
 </resources>

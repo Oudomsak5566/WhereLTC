@@ -16,7 +16,7 @@ import com.squareup.okhttp.Response;
 public class MySynUser extends AsyncTask<Void,Void,String>{
     //Explicit
     private Context context;
-    private static final String urlJSON = "http://swiftcodingthai.com/ltc/php_get_user_mounoy.php";
+    private static final String urlJSON = "http://lao-hosting.com/ltc/get_user_master.php";
 
 
 
@@ -34,9 +34,6 @@ public class MySynUser extends AsyncTask<Void,Void,String>{
             Request request = builder.url(urlJSON).build();
             Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
-
-
-
         } catch (Exception e) {
             //Chk Log (Alt+6)
             Log.d("14DecV2", "e SynUser > "+e.toString());
