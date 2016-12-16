@@ -1,0 +1,14 @@
+package com.example.hp.whereltc;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class LTClistView extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ltclist_view);
+    }// Main Method
+
+}//Main Class

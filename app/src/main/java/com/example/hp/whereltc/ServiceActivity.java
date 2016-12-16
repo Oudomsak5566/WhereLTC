@@ -18,7 +18,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,6 +28,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.jibble.simpleftp.SimpleFTP;
+
+import java.io.File;
 
 public class ServiceActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -41,11 +47,14 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
 
     private EditText editText;
     private ImageView imageView, takePhotoImageView;
-    private String nameImageString, pathImageString;
+    private String nameImageString, pathImageString, urlImageString; //http://lao-hosting.com/ltc/Image/IMG_20161215_012947.jpg
 
     private Uri uri;
 
     private boolean aBoolean = true;
+
+
+
 
 
 
@@ -102,20 +111,26 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
                 startActivityForResult(Intent.createChooser(intent,"Please Choose App"),1);
 
 
+
+
+
             }
         });
 
     }// Main Method
 
 
+    public void clickListView(View view) {
+        startActivity(new Intent(ServiceActivity.this,LTClistView.class));
+
+    }
 
 
     //Alt+Insert Select onActivityResult
     //
     @Override
-    protected void onActivityResult(int requestCode,
-                                    int resultCode,
-                                    Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
@@ -156,12 +171,44 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
         } else {
             //Data Ok
             uploadImage();
+            uploadString();
+
+
 
 
         }
 
 
     }//clickSave
+
+    private void uploadString() {
+        urlImageString = "http://lao-hosting.com/ltc/Image" + pathImageString.substring(pathImageString.lastIndexOf("/"));
+
+
+        try {
+            UpdateLTC updateLTC = new UpdateLTC(ServiceActivity.this,
+                    nameImageString, urlImageString,
+                    Double.toString(updateLatADouble),
+                    Double.toString(updateLngADouble));
+            updateLTC.execute();
+            if (Boolean.parseBoolean(updateLTC.get())) {
+                Toast.makeText(ServiceActivity.this,"Save Ok",Toast.LENGTH_LONG).show();
+                //Link Form
+                // startActivity(new Intent(ServiceActivity.this,LTClistView.class));
+            } else {
+                Toast.makeText(ServiceActivity.this,"Can not Save",Toast.LENGTH_LONG).show();
+            }
+
+        } catch (Exception e) {
+            Log.d("16decV2", "Save >>>> " + urlImageString);
+        }
+
+
+
+
+
+
+    }
 
     private void uploadImage() {
         try {
@@ -181,7 +228,14 @@ public class ServiceActivity extends FragmentActivity implements OnMapReadyCallb
                 pathImageString = uri.getPath();
             }
 
-            Log.d("16decV2", "path >>>> " + pathImageString);
+            SimpleFTP simpleFTP = new SimpleFTP();
+            simpleFTP.connect("ftp.lao-hosting.com",21,"ltc@lao-hosting.com","Abc12345");
+            simpleFTP.bin();
+            simpleFTP.cwd("Image");//Path Storage Folder Name on FTP server
+            simpleFTP.stor(new File(pathImageString));
+            simpleFTP.disconnect();
+            Toast.makeText(ServiceActivity.this,"Update Image Finish",Toast.LENGTH_LONG).show();
+
 
 
 
